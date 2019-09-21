@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+     Audio Files
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list style="margin-top:5vh;" *ngIf="AudioFiles.Audio.length>0">
+    
+    <ion-item *ngFor="let audio of AudioFiles.Audio" (click)="playAudio(audio.filePath)">
+      <ion-item-divider>
+          <ion-label>{{audio.fileName}}</ion-label>
+          <ion-icon name="play" slot="end"></ion-icon>
+      </ion-item-divider>
+      
+    </ion-item>
+  </ion-list>
+  <ion-row *ngIf="!AudioFiles.Audio.length||AudioFiles.Audio.length==0" style="justify-content: center;height:100vh;align-items: center">
+      <ion-label ><strong>No Audio Files Found</strong></ion-label>
+  </ion-row>
+  
+</ion-content>

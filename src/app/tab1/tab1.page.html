@@ -18,9 +18,20 @@
         <ion-grid>
           <ion-row>
             <ion-col></ion-col>
-            <ion-button >
-                <ion-icon name="mic" color="dark"></ion-icon>&nbsp;&nbsp;Start Recording
-              </ion-button>
+            <ion-col>
+                <ion-row *ngIf="recording==false" style="justify-content: center">
+                    <ion-button (click)="startRecord()" >
+                    <ion-icon name="mic" color="dark"></ion-icon>&nbsp;&nbsp;Start Recording
+                  </ion-button>
+                </ion-row>
+                <ion-row *ngIf="recording==true" style="justify-content: center">
+                    <ion-button color="light" (click)="stopRecord()" >
+                        <ion-icon name="radio-button-on" style="color:red"></ion-icon>&nbsp;&nbsp;Stop recording
+                      </ion-button>
+                </ion-row>
+            </ion-col>
+              
+              
               <ion-col></ion-col>
             </ion-row>
         </ion-grid>
