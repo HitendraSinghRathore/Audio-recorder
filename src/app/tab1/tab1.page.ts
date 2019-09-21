@@ -29,8 +29,9 @@ export class Tab1Page implements OnInit {
       this.loadFiles();
     }
     startRecord(){
-      this.fileName = 'record'+new Date().getDate()+new Date().getMonth()+new Date().getFullYear()+new Date().getHours()+new Date().getMinutes()+new Date().getSeconds()+'.mp3';
-      this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g,'') + this.fileName;
+      // tslint:disable-next-line: max-line-length
+      this.fileName = 'record' + new Date().getDate() + new Date().getMonth() + new Date().getFullYear() + new Date().getHours() + new Date().getMinutes() + new Date().getSeconds() + '.mp3';
+      this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
       this.audio.startRecord();
       this.recording = true;
@@ -60,9 +61,8 @@ export class Tab1Page implements OnInit {
       toast.present();
     }
     loadFiles(){
-      this.storage.get('AudioData').then((data) =>{
+            this.storage.get('AudioData').then((data) =>{
         this.AudioFiles.Audio = data || [];
-      })
-    }
-   
+      });
+        }
 }
