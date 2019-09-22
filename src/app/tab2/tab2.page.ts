@@ -18,11 +18,20 @@ fileURI: string;
 
               }
 playAudio(filePath: string){
-  this.fileURI = filePath;
-  this.audio = this.media.create(this.fileURI);
-  this.audio.play();
-  this.audio.setVolume(1.0);
+ if(this.audio) {
+   this.audio.stop();
+ }
+ this.fileURI = filePath;
+ this.playing = true;
+ this.audio = this.media.create(this.fileURI);
+ this.audio.play();
+ this.audio.setVolume(1.0);
 }
+stopAudio(filePath: string){
+this.playing = false;
+this.audio.stop();
+}
+
 
 
 

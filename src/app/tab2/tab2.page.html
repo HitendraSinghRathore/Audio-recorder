@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title style="text-align: center"> 
      Audio Files
     </ion-title>
   </ion-toolbar>
@@ -9,10 +9,11 @@
 <ion-content>
   <ion-list style="margin-top:5vh;" *ngIf="AudioFiles.Audio.length>0">
     
-    <ion-item *ngFor="let audio of AudioFiles.Audio" (click)="playAudio(audio.filePath)">
+    <ion-item *ngFor="let audio of AudioFiles.Audio">
       <ion-item-divider>
           <ion-label>{{audio.fileName}}</ion-label>
-          <ion-icon name="play" slot="end"></ion-icon>
+          <ion-icon name="play" slot="end"  (click)="playAudio(audio.filePath)" *ngIf="fileURI != audio.filePath || playing == false"></ion-icon>
+          <ion-icon name="pause" slot="end" *ngIf="fileURI == audio.filePath && playing == true" (click)="stopAudio(audio.filePath)"></ion-icon>
       </ion-item-divider>
       
     </ion-item>
